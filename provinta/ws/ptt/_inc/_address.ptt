@@ -1,0 +1,16 @@
+!{[
+
+ реквизиты внизу страницы
+
+]}
+  <tr>
+    <td></td>
+    <td class="menuitem">&copy; 2002 ООО "Провинта"</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>E-mail: <a href="mailto:info@provinta.ru" title="пишите нам!">info@provinta.ru</a><br>
+      Телефон: (3432) 720-830<br>
+    </td>
+    <td></td>
+  </tr>

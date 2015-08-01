@@ -1,0 +1,19 @@
+!{
+
+указатели на предыдущую/следующую страницу для архива новостей
+
+}*{if condition=" q`${page_prev path="news_module"}` || q`${page_next path="news_module"}` "}!{
+ --- ссылки вперед и/или назад ---
+}<p><table width="100%" border=0 cellpadding=0 cellspacing=0>
+<tr><td colspan=2><img src="/img/spacer.gif" width="1" height="10"></td></tr>
+<tr>
+<td align="left">*{if condition=" q`${page_prev path="news_module"}` "
+}<a href="${url}?newspage=${page_prev path="news_module"}"
+>&lt;&lt; предыдущая страница</a>*{else}&nbsp;*{endif}</td>
+<td align="right">*{if condition=" q`${page_next path="news_module"}` "
+}<a href="${url}?newspage=${page_next path="news_module"}"
+>следующая страница &gt;&gt;</a>*{else}&nbsp;*{endif}</td>
+</tr>
+<tr><td colspan=2><img src="/img/spacer.gif" width="1" height="10"></td></tr>
+</table></p>
+*{endif}

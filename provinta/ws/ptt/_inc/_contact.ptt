@@ -1,0 +1,18 @@
+!{
+
+форма "оставьте Ваши координаты"
+
+}
+#{[_hr.ptt]}
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><img src="/img/spacer.gif" width="1" height="10"></td></tr>
+<form action="/ws/feedback/contact/" method="POST">
+<tr><td class="contacthead">Укажите Ваше имя, телефон или <nobr>e-mail</nobr>
+и наш менеджер <nobr>свяжется с Вами:</nobr></td></tr>
+<tr><td><img src="/img/spacer.gif" width="1" height="7"></td></tr>
+<tr><td class="menuitem"><input type="text" name="contact"></td></tr>
+<tr><td><img src="/img/spacer.gif" width="1" height="7"></td></tr>
+<tr><td class="menuitem"><input class="button" type="submit" name="submit" value="передать"></td></tr>
+<tr><td><img src="/img/spacer.gif" width="1" height="10"></td></tr>
+</form>
+</table>

@@ -1,0 +1,374 @@
+#
+# Конфигурационный файл описания структуры сайта
+# используется парсером
+#
+
+#
+# ВАЖНО:
+#
+#  - Ко всем ссылкам от корня сайта (поля href) автоматически
+#    приписывается префикс парсера (config:uriprefix).  Чтобы задать
+#    ссылку от корня вне парсера, нужно использовать двойной
+#    слеш (//uri/path)
+#
+
+#----------------------
+# Глобальные параметры
+#----------------------
+<config>
+
+	# базовый каталог (относильно него задаются пути)
+	basedir /web/convert/provinta/ws
+
+	# URI-префикс парсера
+	uriprefix /ws
+	
+	# основной каталог шаблонов (полный путь или относительно basedir)
+	pttdir ptt
+
+	# дополнительные каталоги шаблонов (можно несколько черезх пробел)
+	pttextradirs
+
+	# шаблон для вывода страницы по умолчанию (если не задан явно)
+	pttdefault page.ptt
+
+	# выводить (0) или не выводить (1) сообщения об ошибках в шаблонах
+	pttnowarn 0
+
+	# каталог подгружаемых модулей (полный путь или относительно basedir)
+	modulesdir modules
+
+</config>
+
+#------------------------------------
+# Подгружаемые модули и их параметры
+#------------------------------------
+<modules>
+
+# модуль вывода новостей
+<module news>
+	# код модуля (относительно каталога модулей)
+	code news.pm
+
+	<config>
+	# полный или относительно basedir путь к каталогу новостей
+	newsdir data/news
+	</config>
+	
+</module>
+	
+</modules>
+
+#----------------
+# Структура меню
+#----------------
+
+<menu>
+
+	<chapter adv>
+                text	интернет-реклама
+
+                <item meaning>
+                	text	смысл и цели рекламы
+                	href	/adv/meaning/
+                        title	Смысл и цели интернет-рекламы
+                </item>
+                <item methods>
+                	text    методы и подходы
+                	href	/adv/methods/
+                	title	методы и подходы в интернет-рекламе
+                </item>
+                <item urals>
+                	text    реклама на Урале
+                	href	/adv/urals/
+                	title	Специфика размещения интернет-рекламы на Урале
+                </item>
+                <item sites>
+                	text    уральские площадки
+                	href	/adv/sites/
+                </item>
+                
+	</chapter>
+	
+	<chapter cons>
+                text	web-консалнитиг
+
+                <item meaning>
+                	text	смысл и цели консалтинга
+                	href	/cons/meaning/
+                </item>
+                <item effective>
+                	text    эффективный web-сайт
+                	href	/cons/effective/
+                </item>
+                <item directories>
+                	text	web-каталоги Урала
+                	href	/cons/directories/
+                </item>
+                <item free>
+                	text    бесплатная консультация
+                	href	/cons/free/
+                </item>
+                
+	</chapter>
+
+	<chapter job>
+                text    о работе и ценах
+
+                <item how>
+                	text    как мы работаем
+                	href	/job/how/
+                </item>
+                <item price>
+                	text    прейскурант
+                	href	/job/price/
+                </item>
+                <item order>
+                	text    бланк заказа
+                	href	/job/order/
+                </item>
+                
+	</chapter>
+
+	<chapter provinta>
+                text    о Провинте
+
+                <item mission>
+                	text    миссия
+                	href	/provinta/mission/
+                	title	Миссия интернет-агентства "Провинта"
+                </item>
+                <item history>
+                	text    история
+                	href	/provinta/history/
+                	title	История организации, архив новостей
+                </item>
+                <item acct-details>
+                	text    реквизиты
+                	href	/provinta/acct-details/
+                	title	Кооррдинаты и бухгалтерские реквизиты
+                </item>
+                
+	</chapter>
+
+</menu>
+
+#------------------
+# Описание страниц
+#------------------
+
+<pages>
+	#
+	# Обложка
+	#
+	<uri />
+	pattern root.ptt
+	title Главная страница
+	description Интернет агенство "Провинта". Размещение интернет-рекламы на популярных сайтах Урала, медиапланирование, web-консалтинг. Звоните нам: (3432) 720-830.
+	keywords Провинта, реклама, медиаплан, площадка, консалтинг, сайт, баннер, уральский, урал, web-консультирование, размещение, разработка, рекламная кампания, концепция
+
+	# на этой странице можно включать счетчики для обложки
+	root_counters 1
+
+	# запускаемые модули (может быть несколько блоков)
+	# внутри блока задаются параметры для данной страницы
+        <module news>
+        	# тип страницы (root|archive)
+        	pagetype root
+        	# макс. количество новостей для страницы
+        	newscount 3
+        	# макс. срок давности выводимых новостей
+        	# (если для конкретных новостей не задано иное)
+        	newsmaxage 90
+        </module>
+        
+	</uri>
+
+	#
+	# интернет-реклама
+	#
+	<uri /adv/>
+	redirect /adv/meaning/
+	</uri>
+	
+	<uri /adv/meaning/>
+	page adv/meaning.ptt
+	title Смысл и цели интернет-рекламы
+	description Смысл и цели интрернет-рекламы с точки зрения агенства Провинта
+	keywords реклама, интернет-реклама, цель, смысл, назначение, средство, эффективность
+        menuitem adv:meaning
+        <path>
+                <item>
+                text интернет-реклама
+                </item>
+                <item>
+                text смысл и цели рекламы
+                href /adv/meaning/
+                title Смысл и цели интернет-рекламы
+                </item>
+        </path>
+	</uri>
+
+	<uri /adv/methods/>
+	page adv/methods.ptt
+	title Методы и подходы в интернет-рекламе
+	description Медоды и подходы в интернет-рекламе.  Виды рекламных носителей.
+	keywords реклама, интернет-реклама, эффективность, средство, баннер, носитель, размещение, изготовление
+        menuitem adv:methods
+        <path>
+                <item>
+                text интернет-реклама
+                href /adv/
+                title Интернет-реклама
+                </item>
+                <item>
+                text методы и подходы
+                href /adv/methods/
+                title Методы и подходы в интернет-рекламе
+                </item>
+        </path>
+	</uri>
+
+	<uri /adv/urals/>
+	page adv/urals.ptt
+	title Рекрама в уральском интернете
+	description Специфика рекламы в уральском сегменте интернета.
+	keywords реклама, интернет-реклама, Урал, специфика, Свердловская область, геогрфический таргетинг, региональный сайт
+        menuitem adv:urals
+        <path>
+                <item>
+                text интернет-реклама
+                href /adv/
+                title Интернет-реклама
+                </item>
+                <item>
+                text реклама на Урале
+                href /adv/urals/
+                title Специфика размещения рекламы в уральском интернете
+                </item>
+        </path>
+	</uri>
+
+        #
+        # О Провинте
+        #
+	<uri /provinta/>
+	redirect /provinta/history/
+	</uri>
+	
+	<uri /provinta/mission/>
+	pattern page.ptt
+	page provinta/mission.ptt
+	title Миссия компании
+	description Миссия интернет агенства "Провинта".
+	keywords миссия, наначение, провинциальное интернет-агентство, интернет-технологии, маркетинг, телекоммуникации
+        menuitem provinta:mission
+        <path>
+                <item>
+                text о Провинте
+                href /provinta/
+                title Все об интернет агентстве "Провинта"
+                </item>
+                <item>
+                text миссия компании
+                href /provinta/mission/
+                title Миссия интернет агентства "Провинта"
+                </item>
+        </path>
+	</uri>
+
+	<uri /provinta/history/newsarchive/>
+	pattern page.ptt
+	page provinta/history/newsarchive.ptt
+	title Архив новостей
+	description Архив новостей - это еще один взгляд на историю компании.
+	keywords история, новости, архив, кампания, портал, клиенты, развитие
+        menuitem provinta:history
+        <path>
+                <item>
+                text о Провинте
+                href /provinta/
+                title Все об интернет агентстве "Провинта"
+                </item>
+                <item>
+                text история компании
+                href /provinta/history/
+                title история агентства
+                </item>
+                <item>
+                text архив новостей
+                href /provinta/history/newsarchive/
+                title архив новостей - другой взгляд на историю
+                </item>
+        </path>
+
+        <module news>
+        	# тип страницы (root|archive)
+        	pagetype archive
+        	# макс. количество новостей для страницы
+        	newscount 20
+        	# макс. срок давности выводимых новостей
+        	newsmaxage 1000
+        </module>
+        
+	</uri>
+
+	<uri /provinta/acct-details/>
+	pattern page.ptt
+	page provinta/acct-details.ptt
+	title Координаты и реквизиты
+	description Координаты и бухгалтерские реквизиты интернет-агентства Провинта
+	keywords адрес, расчетный счет, реквизиты, координаты, банк, телефон, 720-830
+        menuitem provinta:acct-details
+        <path>
+                <item>
+                text о Провинте
+                href /provinta/
+                title Все об интернет агентстве "Провинта"
+                </item>
+                <item>
+                text реквизиты
+                href /provinta/acct-details/
+                title Координаты и бухгалтерские реквизиты
+                </item>
+        </path>
+	</uri>
+
+	# -------------------- ошибки ----------------------
+
+	#
+	# 404 (внутри /ws/)
+	#
+	<uri :error404:>
+	pattern error.ptt
+	page 404.ptt
+	title Ошибка 404: документ не найден
+	headline 404. Документ не найден.
+	description Документ не найден. Попробуйте начать с обложки сайта www.provinta.ru
+	</uri>
+
+	#
+	# 404 (вне /ws/)
+	# требуется директива .htaccess: ErrorDocument 404 /_error404/
+	#
+	<uri /_error404/>
+	outside_ws 1
+	pattern error.ptt
+	page 404.ptt
+	title Ошибка 404: документ не найден
+	headline 404. Документ не найден.
+	description Документ не найден. Попробуйте начать с обложки сайта www.provinta.ru
+	</uri>
+
+	#
+	# Внутренняя ошибка модуля
+	#
+	<uri :error_module:>
+	pattern error.ptt
+	page module.ptt
+	title Внутренняя ошибка модуля сервера
+	headline Внутренняя ошибка модуля сервера.
+	description К сожалению, при попытке отобразить страницу возникла внутренняя ошибка одного из модулей.
+	</uri>
+	
+</pages>

@@ -1,0 +1,10 @@
+!{[
+
+Блок новостей на обложке сайта
+
+]}@{[newslist
+	patternfile="newsitem.ptt"
+	head="<h3>Новости</h3>"
+	foot="<p><a href=\\"/ws/provinta/history/newsarchive/\\">архив новостей &gt;&gt;</a></p>"
+]}
+

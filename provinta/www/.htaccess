@@ -1,0 +1,16 @@
+RewriteEngine On
+
+#
+# Каноническое имя сервера provinta.ru и никак иначе. :)
+#
+RewriteCond %{SERVER_NAME} !^(sghome\.)?provinta.ru
+RewriteRule ^(/addsite/provinta.ru)?(.*)$ http://provinta.ru/$2 [L,R]
+
+#
+# По умолчанию перебрасываем на парсер и работаем с ним
+#
+RewriteRule ^$ 			/ws/		[R,L]
+RewriteRule ^ws$		/ws/		[R,L]
+RewriteRule ^ws/(.*)$		/ws.cgi/$1	[L,QSA]
+
+ErrorDocument 404 /ws/_error404/

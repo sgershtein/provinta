@@ -1,0 +1,7 @@
+!{[
+
+ вывод текущего "пути" документа - элемент пути
+
+]}*{if
+condition=" q`${href}` "}<a *{if condition=" q`${title}` "}title="${title}"*{endif}class="pathitem" href="${href filter="href"}">${text}</a>*{else
+}<span class="pathitem">${text}</span>*{endif}

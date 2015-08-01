@@ -1,0 +1,13 @@
+!{[
+
+  основное меню - пункт
+
+]}<tr>
+<td class="*{[if condition=" q`${menuitem path="_global_/page"}` eq q`${_id}` "]}menuitemselected*{else}menuitem*{endif}">*{[if
+condition=" q`${menuitem path="_global_/page"}` eq q`${_id}` "]}<img
+src="/img/menuptr.gif" width="9" height="12" align="left" border=0
+>*{endif}*{[if condition=" q`${href}` "
+]}<a class="*{[if condition=" q`${menuitem path="_global_/page"}` eq q`${_id}` "]}menuitemselected*{else}menuitem*{endif}"*{if
+condition=" q`${title}` "} title="${title}"*{endif} href="${href filter="href"}">${text}</a>*{else
+}${text}*{endif}</td>
+</tr>

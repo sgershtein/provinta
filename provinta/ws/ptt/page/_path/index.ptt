@@ -1,0 +1,9 @@
+!{[
+
+ вывод текущего "пути" документа
+
+]}@{[path
+	path="page"
+	join="&nbsp;&nbsp;/&nbsp; "
+	patternfile="pathitem.ptt"
+]}

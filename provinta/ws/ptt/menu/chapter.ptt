@@ -1,0 +1,9 @@
+!{[
+
+  основное меню - раздел
+
+]}<tr>
+<td class="menuhead">${text}</td>
+</tr>
+@{[items patternfile="item.ptt"]}
+<tr><td class="menuitem">&nbsp;</td></tr>
